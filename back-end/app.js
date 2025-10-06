@@ -80,3 +80,7 @@ app.post('/messages/save', async (req, res) => {
 
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
+const aboutRouter = require("./routes/about");
+app.use("/api/about", aboutRouter);
+const messagesRouter = require("./routes/messages");
+app.use("/api/messages", messagesRouter);

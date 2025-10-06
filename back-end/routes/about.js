@@ -10,8 +10,9 @@ router.get("/", (req, res) => {
       "I’ve worked on multi-objective optimization for quantum neural networks and QAE for option pricing.",
       "I also enjoy case competitions, building side projects, and grilling an excellent chicken tikka."
     ],
-    photoUrl: "https://picsum.photos/seed/shaf/800/480"
+    photoUrl: "/images/me.jpg"
   });
 });
 
 module.exports = router;
+

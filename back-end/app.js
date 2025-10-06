@@ -1,3 +1,4 @@
+const path = require('path');
 require('dotenv').config({ silent: true }) // load environmental variables from a hidden file named .env
 const express = require('express') // CommonJS import style!
 const morgan = require('morgan') // middleware for nice logging of incoming HTTP requests
@@ -80,3 +81,17 @@ app.post('/messages/save', async (req, res) => {
 
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
+const aboutRouter = require("./routes/about");
+app.use("/api/about", aboutRouter);
+const messagesRouter = require("./routes/messages");
+app.use("/api/messages", messagesRouter);
+
+/* ---- STATIC: serve React build (keep this AFTER API routes) ---- */
+const buildPath = path.join(__dirname, "..", "front-end", "build");
+app.use(express.static(buildPath));
+
+app.get("*", (req, res) => {
+  // let React handle client-side routes
+  res.sendFile(path.join(buildPath, "index.html"));
+});
+/* ---- END STATIC ---- */

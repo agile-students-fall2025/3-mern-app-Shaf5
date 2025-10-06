@@ -98,3 +98,13 @@ Initial set up of MongoDB database:
 - access the mongo shell with `docker exec -it mongodb_dockerhub mongosh -u admin -p secret`
 - run command, `show dbs` within the mongo shell to see a list of databases
 - type `exit` to quit the shell after you confirm it is working
+
+## How to run (single-port)
+1. Start MongoDB Docker container:
+   docker start mongodb_dockerhub
+2. Build frontend:
+   cd front-end && npm install && npm run build
+3. Start backend (serves API + React build on port 7001):
+   cd ../back-end && npm install && npm start
+4. Open http://localhost:7001
+
